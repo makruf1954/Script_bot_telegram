@@ -5,6 +5,7 @@ BOT_TOKEN=""
 CHAT_ID=""
 
 # Path variabel
+HOME="$(pwd)"
 ZIP_NAME="A22-$(date +%Y%m%d-%H%M).zip"
 OUT_IMG="$HOME/kernel/out/arch/arm64/boot/Image.gz"
 ANYKERNEL="$HOME/AnyKernel3"
