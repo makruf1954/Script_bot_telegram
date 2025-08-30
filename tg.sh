@@ -7,7 +7,13 @@ CHAT_ID=""
 # Path variabel
 HOME="$(pwd)"
 ZIP_NAME="A22-$(date +%Y%m%d-%H%M).zip"
-OUT_IMG="$HOME/kernel/out/arch/arm64/boot/Image.gz"
+if
+    OUT_IMG="$HOME/out/arch/arm64/boot/Image.gz"
+elif
+    OUT_IMG="$HOME/out/arch/arm64/boot/Image.gz-dtb"
+elif
+    OUT_IMG="$HOME/out/arch/arm64/boot/Image"
+fi
 ANYKERNEL="$HOME/AnyKernel3"
 
 # Salin & zip
@@ -29,13 +35,10 @@ else
 fi
 
 # Caption
-CAPTION="*azure-kernel*
+CAPTION="*A22-$DATE*
 \`\`\`
 LocalVersion :
 $KERNEL_VER
-
-Build : $DATE
-
 \`\`\`
 *Flash via TWRP only*
 "
@@ -49,4 +52,4 @@ curl -F document=@"$ZIP_NAME" \
 # clean
 cd $ANYKERNEL
 rm -rf $ZIP_NAME
-cd
+cd $HOME
