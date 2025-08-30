@@ -7,12 +7,16 @@ CHAT_ID=""
 # Path variabel
 HOME="$(pwd)"
 ZIP_NAME="A22-$(date +%Y%m%d-%H%M).zip"
-if
+
+if [ -f "$HOME/out/arch/arm64/boot/Image.gz" ]; then
     OUT_IMG="$HOME/out/arch/arm64/boot/Image.gz"
-elif
+elif [ -f "$HOME/out/arch/arm64/boot/Image.gz-dtb" ]; then
     OUT_IMG="$HOME/out/arch/arm64/boot/Image.gz-dtb"
-elif
+elif [ -f "$HOME/out/arch/arm64/boot/Image" ]; then
     OUT_IMG="$HOME/out/arch/arm64/boot/Image"
+else
+    echo " Tidak ada file Image hasil build!"
+    exit 1
 fi
 ANYKERNEL="$HOME/AnyKernel3"
 
